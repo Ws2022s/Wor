@@ -1,21 +1,19 @@
  hosts: "all"
-  become: true
-  tasks:
-  - name: "Install nginx via apt"
-    ansible.builtin.apt:
-      name: "nginx"
-      state: "latest"
-      update_cache: true
-
-  - name: "Delete /var/www/html folder"
-    ansible.builtin.file:
-      path: "/var/www/html"
-      state: "absent"
-
-  - name: "Copy our lending to /var/www/html folder"
-    ansible.builtin.copy:
-      scr: "files/html"
-      dest: "/var/www/"
-      owner: "vagrant"
-      group: "vagrant"
-      mode: "1834"
+ become: true
+ tasks:
+ - name: "Install nginx via apt"
+ansible.builtin.apt:
+name: "nginx"
+state: "latest"
+update_cache: true
+ - name: "Delete /var/www/html folder"
+ ansible.builtin.file:
+path: "/var/www/html"
+state: "absent"
+- name: "Copy our lending to /var/www/html folder"
+ansible.builtin.copy:
+scr: "files/html"
+dest: "/var/www/"
+Owner: "vagrant"
+group: "vagrant"
+mode: "1834"
